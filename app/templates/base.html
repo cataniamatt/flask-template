@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    {% if title %}
+    <title>{{ title }} - Flask Template</title>
+    {% else %}
+    <title>Flask Template</title>
+    {% endif %}
+</head>
+<body class="bg-light">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link {% if request.path == url_for('index') %}active{% endif %}" href="{{ url_for('index') }}">Home</a>
+                        <a class="nav-link {% if request.path == url_for('form') %}active{% endif %}" href="{{ url_for('form') }}">Form</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="container py-5">
+      <div class="row">
+          {% block content %}{% endblock %}
+      </div>
+    </main>
+
+<script src="static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

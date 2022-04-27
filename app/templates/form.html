@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+         {{ message }}
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>      
+      <br>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+<h4 class="mb-3">Template form</h4>
+<p class="mb-0">Enter all the details in the form below.</p>
+<hr class="my-4">
+<form action="" method="POST" novalidate>
+   {{ form.hidden_tag() }}
+   <div class="form-group row g-3">
+
+
+      <!-- Text field -->
+      <div class="col-12">
+         {{ form.name.label(class="form-label") }}
+         {% if form.name.errors %}
+            {{ form.name(class="form-control is-invalid", placeholder="Enter your name") }}
+            <div class="invalid-feedback">
+               {% for error in form.name.errors %}
+                  <span>{{ error }}</span>
+               {% endfor %}
+            </div>
+         {% else %}
+            {{ form.name(class="form-control", placeholder="Enter your name") }}
+         {% endif %}
+      </div>
+
+
+      <!-- Text field -->
+      <div class="col-12">
+         {{ form.surname.label(class="form-label") }}
+         {% if form.surname.errors %}
+            {{ form.surname(class="form-control is-invalid", placeholder="Enter your surname") }}
+            <div class="invalid-feedback">
+               {% for error in form.surname.errors %}
+                  <span>{{ error }}</span>
+               {% endfor %}
+            </div>
+         {% else %}
+            {{ form.surname(class="form-control", placeholder="Enter your surname") }}
+         {% endif %}
+      </div>
+
+
+      <!-- Radio buttons -->
+      <div class="col-12">
+         {{ form.gender.label(class="form-label") }}
+
+         {% if form.gender.errors %}
+            
+            {% for gender in form.gender %}
+            <div class="form-check is-invalid">
+               {{ gender(class="form-check-input") }}
+               {{ gender.label(class="form-check-label") }}
+            </div>
+            {% endfor %}
+            <div class="invalid-feedback">
+               {% for error in form.gender.errors %}
+                  <span>{{ error }}</span>
+               {% endfor %}
+            </div>
+
+         {% else %}
+            {% for gender in form.gender %}
+            <div class="form-check">
+               {{ gender(class="form-check-input") }}
+               {{ gender.label(class="form-check-label") }}
+            </div>
+            {% endfor %}
+
+         {% endif %}
+
+      </div>
+
+
+      <!-- Drop-down selection -->
+      <div class="col-12">
+         {{ form.sport.label(class="form-label") }}
+         {% if form.sport.errors %}
+            {{ form.sport(class="form-select is-invalid") }}
+            <div class="invalid-feedback">
+               {% for error in form.sport.errors %}
+                  <span>{{ error }}</span>
+               {% endfor %}
+            </div>
+         {% else %}
+            {{ form.sport(class="form-select") }}
+         {% endif %}
+      </div>
+
+
+      <hr class="my-4">
+   </div> 
+   <div class="col-12">
+      {{ form.submit(class="w-100 btn btn-danger btn-lg") }}
+   </div>
+
+</form>
+
+{% endblock %}
