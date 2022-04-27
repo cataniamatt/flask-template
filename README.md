@@ -3,7 +3,7 @@
 This is a template for projects based on Flask and it includes a functional web form that captures user input. User input is validated using FlaskWTF. 
 
 ## Python virtual environment
-Go to the project directory and execute the following command to create a Python virutal environment:
+Go to the project directory and execute the following command to create a Python virtual environment:
 
 ```
 python3 -m venv venv
