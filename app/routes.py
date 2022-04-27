@@ -20,7 +20,7 @@ def form():
         gender = form.gender.data
         sport = form.sport.data
 
-        flash(f"Name: {name} {surname}\n Gender: {gender}\n Favourite sport: {sport}", 'success')
+        flash(f"Name: {name} {surname}, Gender: {gender}, Sport: {sport}", 'success')
         return redirect(url_for('form'))
 
     return render_template('form.html', title=title, form=form)
